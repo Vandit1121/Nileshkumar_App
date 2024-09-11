@@ -2,6 +2,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 import docClient from "../dbConnect.js";
+import AWS from "aws-sdk"; 
+
+const dynamoDB = new AWS.DynamoDB();
 
 export const signupController = async (req, res) => {
     try {
