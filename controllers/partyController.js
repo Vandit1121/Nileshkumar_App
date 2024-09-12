@@ -20,6 +20,7 @@ export const singlePartyDetails = async (req, res) => {
     result.Items.map((item)=> {partyDetails.push({"Taluka":item.Taluka.S});
                                 partyDetails.push({"DealerName":item.DealerName.S});
                                 partyDetails.push({"PartyNameID":item.PartyNameID.S});
+                                partyDetails.push({"PhoneNumber":item.PhoneNumber.S});
                                 });
     res.send(partyDetails);
 }
