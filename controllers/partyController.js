@@ -18,7 +18,7 @@ export const singlePartyDetails = async (req, res) => {
     const partyDetails = [];
     const result = await dynamoDB.executeStatement({ Statement: `SELECT * FROM Vandit_Agency_PartyName WHERE "PartyName" = '${partyName}'` }).promise();
     result.Items.map((item)=> {partyDetails.push({"Taluka":item.Taluka.S});
-                                partyDetails.push({"DealerName":item.DealerName.S});
+                                partyDetails.push({"OwnerName":item.OwnerName.S});
                                 partyDetails.push({"PartyNameID":item.PartyNameID.S});
                                 partyDetails.push({"PhoneNumber":item.PhoneNumber.S});
                                 });
@@ -28,12 +28,11 @@ export const singlePartyDetails = async (req, res) => {
 export const addNewPartyController = async(req,res) =>{
     console.log(req.query);
     try{
-        const allPartyDetails = [];
         const PartyNameID = uuidv4();
         const params_put = {
             TableName: "Vandit_Agency_PartyName",
             Item: {
-                PartyNameID, PartyName: req.query.partyName, DealerName: req.query.dealerName, Taluka: req.query.taluka,PhoneNumber: req.query.phoneNumber, PartyAddress: req.query.partyAddress
+                PartyNameID, PartyName: req.query.partyName, OwnerName: req.query.ownerName, Taluka: req.query.taluka,PhoneNumber: req.query.phoneNumber, PartyAddress: req.query.partyAddress
             }
         }
         await docClient.put(params_put).promise();
