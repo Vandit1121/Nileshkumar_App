@@ -61,7 +61,11 @@ export const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        console.log(email, password);
+
         const data = await db.query("SELECT * FROM Vandit_Agency_Users WHERE useremail = $1;", [email]);
+
+        console.log(data);
 
         if (data.rowCount === 0) {
             return res.status(404).send("No User Found.");

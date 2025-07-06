@@ -1,11 +1,11 @@
 import express from "express";
-import { addNewPartyController, allPartyName, singlePartyDetails } from "../controllers/partyController.js";
+import { addNewPartyController, allPartyName } from "../controllers/partyController.js";
 
 const router = express.Router();
 
-router.get("/allPartyName",allPartyName);
-router.get("/singlePartyDetails",singlePartyDetails);
-router.post("/addNewParty",addNewPartyController);
+router.get("/fetch-party-data",allPartyName);
+// router.get("/singlePartyDetails",singlePartyDetails);
+router.post("/add-new-party",addNewPartyController);
 
 
 export default router;
