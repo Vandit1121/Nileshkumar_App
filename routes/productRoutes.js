@@ -4,6 +4,6 @@ import { addNewProduct, productDetails } from "../controllers/productController.
 const router = express.Router();
 
 router.post("/add-product",addNewProduct);
-router.post("/fetch-all-products",productDetails);
+router.get("/fetch-all-products",productDetails);
 
 export default router;
