@@ -18,17 +18,8 @@ export const addNewProduct = async (req, res) => {
 export const productDetails = async (req, res) => {
     try {
         const prodDetails = [];
-        const productData = await db.query("SELECT * FROM Vandit_Agency_Products");
-
-       productData.rows.forEach((product) => {
-            prodDetails.push({
-                productname: product.productname,
-                productprice: product.productprice,
-                productquantity: product.productquantity
-            });
-        });
-
-        console.log(prodDetails);
+        const productData = await db.query("SELECT ProductName FROM Vandit_Agency_Products");
+        productData.rows.map((item) => prodDetails.push(item.productname));
         res.status(200).send({prodDetails});
     } catch (error) {
         console.log(error);
